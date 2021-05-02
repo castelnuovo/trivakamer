@@ -1,26 +1,38 @@
-<nav>
-    <div class="nav-wrapper blue accent-4">
-        <a href="/dashboard" class="brand-logo" style="padding-left: 15px">{{ title }}</a>
-        
-        <a href="#" data-target="sidenav" class="right sidenav-trigger">
-            <i class="material-icons">menu</i>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img src="/assets/images/banner.png" alt="trivakamer" class="d-inline-block align-top" height="50" />
         </a>
-        <ul class="right hide-on-med-and-down">
-            <li>
-                <a href="/dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a href="/auth/logout">Logout</a>
-            </li>
-        </ul>
-    </div>
 
-    <ul class="sidenav" id="sidenav">
-        <li>
-            <a href="/dashboard">Dashboard</a>
-        </li>
-        <li>
-            <a href="/auth/logout">Logout</a>
-        </li>
-    </ul>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar" aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsingNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+
+                 {% if logged_in %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">My Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/request">Login or Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>
