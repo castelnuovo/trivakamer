@@ -1,7 +1,8 @@
 {
-    "name": "cubequence/cubequence",
-    "description": "The CubeQuence Framework",
+    "name": "trivakamer/backend",
+    "description": "Trivakamer website code",
     "keywords": [
+        "trivakamer",
         "cubequence"
     ],
     "license": "MIT",
@@ -37,7 +38,7 @@
         ]
     },
     "support": {
-        "issues": "https://github.com/CubeQuence/CubeQuence/issues",
-        "source": "https://github.com/CubeQuence/CubeQuence"
+        "issues": "https://github.com/trivakamer/Backend/issues",
+        "source": "https://github.com/trivakamer/Backend"
     }
 }

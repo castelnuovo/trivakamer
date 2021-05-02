@@ -1,1 +1,1 @@
-alert('welcome to dashboard');
+// alert('welcome to dashboard');

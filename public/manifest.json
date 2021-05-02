@@ -1,7 +1,7 @@
 {
-  "name": "CubeQuence",
-  "short_name": "CubeQuence",
-  "description": "CubeQuence is a ultra-Light custom php framework",
+  "name": "Trivakamer",
+  "short_name": "Trivakamer",
+  "description": "Trivakamer website code",
   "start_url": "/",
   "background_color": "#000000",
   "theme_color": "#0f4a73",

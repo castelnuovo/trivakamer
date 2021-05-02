@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use CQ\Controllers\Controller;
 use CQ\DB\DB;
+use CQ\Helpers\AppHelper;
 use CQ\Helpers\AuthHelper;
 use CQ\Helpers\ConfigHelper;
 use CQ\Helpers\SessionHelper;
@@ -74,7 +75,13 @@ class AuthController extends Controller
             $user = $this->client->getUser(
                 accessToken: $tokens->getAccessToken()
             );
-        } catch (\Throwable) {
+        } catch (\Throwable $th) {
+            if (AppHelper::isDebug()) {
+                return Respond::json(
+                    data: $th->getMessage()
+                );
+            }
+
             return Respond::redirect(
                 url: '/?msg=error'
             );

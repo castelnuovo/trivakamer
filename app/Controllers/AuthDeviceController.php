@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use CQ\Controllers\Controller;
+use CQ\Helpers\AppHelper;
 use CQ\Helpers\AuthHelper;
 use CQ\Helpers\ConfigHelper;
 use CQ\Helpers\SessionHelper;
@@ -82,7 +83,15 @@ class AuthDeviceController extends Controller
                 message: $th->getMessage(),
                 code: 400
             );
-        } catch (\Throwable) {
+        } catch (\Throwable $th) {
+            if (AppHelper::isDebug()) {
+                Respond::prettyJson(
+                    message: 'Unknown error occured!',
+                    data: $th->getMessage(),
+                    code: 400
+                );
+            }
+
             return Respond::prettyJson(
                 message: 'Unknown error occured!',
                 code: 400
