@@ -1,9 +1,9 @@
-<p align="center"><a href="https://github.com/trivakamer/Backend"><img src="https://rawcdn.githack.com/CubeQuence/CubeQuence/855a8fe836989ca40c4e50a889362975eab9ac43/public/assets/images/banner.png"></a></p>
+<p align="center"><a href="https://github.com/trivakamer/trivakamer"><img src="https://rawcdn.githack.com/trivakamer/trivakamer/ec7b98d67558df9c007a7cfc1f1a2c100926678b/public/assets/images/banner.png"></a></p>
 
 <p align="center">
-<a href="https://github.com/trivakamer/backend/commits/master"><img src="https://img.shields.io/github/last-commit/trivakamer/backend" alt="Latest Commit"></a>
-<a href="https://github.com/trivakamer/backend/issues"><img src="https://img.shields.io/github/issues/trivakamer/backend" alt="Issues"></a>
-<a href="LICENSE.md"><img src="https://img.shields.io/github/license/trivakamer/backend" alt="License"></a>
+<a href="https://github.com/trivakamer/trivakamer/commits/master"><img src="https://img.shields.io/github/last-commit/trivakamer/trivakamer" alt="Latest Commit"></a>
+<a href="https://github.com/trivakamer/trivakamer/issues"><img src="https://img.shields.io/github/issues/trivakamer/trivakamer" alt="Issues"></a>
+<a href="LICENSE.md"><img src="https://img.shields.io/github/license/trivakamer/trivakamer" alt="License"></a>
 </p>
 
 # Trivakamer
@@ -16,7 +16,7 @@ Trivakamer website code
 
 For development
 
-1. `git clone https://github.com/trivakamer/backend.git`
+1. `git clone https://github.com/trivakamer/trivakamer.git`
 2. `composer install`
 3. Edit `.env`
 4. `php cubequence app:key`
@@ -26,7 +26,7 @@ For development
 
 For production
 
-1. `git clone https://github.com/trivakamer/backend.git`
+1. `git clone https://github.com/trivakamer/trivakamer.git`
 2. `composer install --optimize-autoloader --no-dev`
 3. Edit `.env`
 4. `php cubequence app:key`
@@ -34,7 +34,7 @@ For production
 
 ## Security Vulnerabilities
 
-Please review [our security policy](https://github.com/trivakamer/backend/security/policy) on how to report security vulnerabilities.
+Please review [our security policy](https://github.com/trivakamer/trivakamer/security/policy) on how to report security vulnerabilities.
 
 ## License
 

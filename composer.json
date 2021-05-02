@@ -1,6 +1,6 @@
 {
-    "name": "trivakamer/backend",
-    "description": "Trivakamer website code",
+    "name": "trivakamer/trivakamer",
+    "description": "Trivakamer website",
     "keywords": [
         "trivakamer",
         "cubequence"
@@ -38,7 +38,7 @@
         ]
     },
     "support": {
-        "issues": "https://github.com/trivakamer/Backend/issues",
-        "source": "https://github.com/trivakamer/Backend"
+        "issues": "https://github.com/trivakamer/trivakamer/issues",
+        "source": "https://github.com/trivakamer/trivakamer"
     }
 }
