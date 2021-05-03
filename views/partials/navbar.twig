@@ -11,16 +11,16 @@
         <div class="collapse navbar-collapse" id="collapsingNavbar">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link {{ title == "Home" ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link {{ title == "Contact" ? 'active' : '' }}" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About us</a>
+                    <a class="nav-link {{ title == "About Us" ? 'active' : '' }}" href="#">About us</a>
                 </li>
 
-                 {% if logged_in %}
+                 {% if (logged_in or title != "Home")  %}
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard">My Account</a>
                     </li>
