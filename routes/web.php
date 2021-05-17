@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Controllers\AdminController;
-use App\Controllers\ExampleController;
 use App\Controllers\GeneralController;
 use App\Controllers\UserController;
 use App\Controllers\AuthWebhookController;
