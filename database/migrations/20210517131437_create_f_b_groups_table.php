@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 use CQ\DB\Migration;
 
-class CreateExampleTable extends Migration
+final class CreateFBGroupsTable extends Migration
 {
     /**
      * Change Method.
@@ -12,7 +10,7 @@ class CreateExampleTable extends Migration
      * Write your reversible migrations using this method.
      *
      * More information on writing migrations is available here:
-     * http://docs.phinx.org/en/latest/migrations.html#the-abstractmigration-class
+     * https://book.cakephp.org/phinx/0/en/migrations.html#creating-a-new-migration
      *
      * The following commands can be used in this method and Phinx will
      * automatically reverse them when rolling back:
@@ -31,15 +29,15 @@ class CreateExampleTable extends Migration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change(): void
+    public function change()
     {
-        $example = $this->table('example', ['id' => false, 'primary_key' => 'id']);
-        $example->addColumn('id', 'uuid')
-            ->addColumn('user_id', 'uuid')
-            ->addColumn('string', 'string', ['limit' => 2048, 'null' => false])
+        $fbGroups = $this->table('fb_groups', ['id' => false, 'primary_key' => 'id']);
+        $fbGroups->addColumn('id', 'uuid')
+            ->addColumn('enabled', 'boolean', ['default' => true, 'null' => false])
+            ->addColumn('fb_group_id', 'string', ['limit' => 15, 'null' => false])
+            ->addColumn('last_checked_at', 'datetime', ['default' => null, 'null' => true])
             ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
-            ->create()
-        ;
+            ->create();
     }
 }

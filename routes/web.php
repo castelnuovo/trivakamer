@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Controllers\AdminController;
 use App\Controllers\ExampleController;
 use App\Controllers\GeneralController;
 use App\Controllers\UserController;
 use App\Controllers\AuthWebhookController;
+use App\Middleware\AdminMiddleware;
 use CQ\Controllers\AuthCodeController;
 use CQ\Controllers\AuthDeviceController;
 use CQ\Middleware\AuthMiddleware;
@@ -35,14 +37,7 @@ $middleware->create(['prefix' => '/auth'], function () use ($route, $middleware)
 $middleware->create(['middleware' => [AuthMiddleware::class]], function () use ($route, $middleware) {
     $route->get('/dashboard', [UserController::class, 'dashboard']);
 
-    $middleware->create(['prefix' => '/example', 'middleware' => [RatelimitMiddleware::class]], function () use ($route, $middleware) {
-        $route->get('', [ExampleController::class, 'index']);
-
-        $middleware->create(['middleware' => [JsonMiddleware::class]], function () use ($route) {
-            $route->post('', [ExampleController::class, 'create']);
-            $route->patch('/{id}', [ExampleController::class, 'update']);
-        });
-
-        $route->delete('/{id}', [ExampleController::class, 'delete']);
+    $middleware->create(['prefix' => '/admin', 'middleware' => [AdminMiddleware::class]], function () use ($route) {
+        $route->get('', [AdminController::class, 'index']);
     });
 });
