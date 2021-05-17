@@ -7,55 +7,52 @@ namespace App\Controllers;
 use CQ\DB\DB;
 use CQ\Controllers\Controller;
 use App\Helpers\FBHelper;
+use CQ\Response\HtmlResponse;
 use CQ\Response\JsonResponse;
 use CQ\Response\Respond;
 
 final class AdminController extends Controller
 {
     /**
-     * Delete user webhook app specific
+     * Show unpublished posts to admin
      */
-    public function index(): JsonResponse
+    public function index(): HtmlResponse | JsonResponse
     {
-        $fb_groups = DB::select(
-            table: 'fb_groups',
+        FBHelper::saveAllGroupPostsToRooms();
+
+        $unpublished_posts = DB::select(
+            table: 'rooms',
             columns: [
                 'id',
-                'fb_group_id',
-                'last_checked_at'
+                'description',
+                'price_monthly',
+                'size_m2',
+                'address',
+                'published_at',
+                'updated_at',
+                'created_at'
             ],
             where: [
-                'enabled' => true
+                'published_at' => null
+                // TODO: limit to oldest 10
             ]
         );
 
-        $fb = FBHelper::get();
-        $posts = [];
-
-        foreach ($fb_groups as $fb_group) {
-            try {
-                $response = $fb->get("/{$fb_group['fb_group_id']}/feed");
-                $posts[] = $response->getGraphEdge()->asArray();
-
-                // TODO: use last_checked_at
-
-                DB::update(
-                    table: 'fb_groups',
-                    data: [
-                        'last_checked_at' => date('Y-m-d H:i:s')
-                    ],
-                    where: [
-                        'id' => $fb_group['id']
-                    ]
-                );
-            } catch (\Throwable) {
-                // This group is ignored
-            }
-        }
-
         return Respond::prettyJson(
-            message: 'yeet',
-            data: $posts
+            message: 'fb_posts',
+            data: [
+                'unpublished_posts' => $unpublished_posts
+            ]
         );
+
+        //     return Respond::twig(
+        //         view: 'admin.twig',
+        //         parameters: [
+        //             'unpublished_posts' => $unpublished_posts
+        //         ]
+        //     );
     }
+
+
+    // publish post method
 }

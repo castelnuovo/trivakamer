@@ -32,9 +32,8 @@ final class CreateFBGroupsTable extends Migration
     public function change()
     {
         $fbGroups = $this->table('fb_groups', ['id' => false, 'primary_key' => 'id']);
-        $fbGroups->addColumn('id', 'uuid')
+        $fbGroups->addColumn('id', 'uuid', 'string', ['limit' => 15, 'null' => false])
             ->addColumn('enabled', 'boolean', ['default' => true, 'null' => false])
-            ->addColumn('fb_group_id', 'string', ['limit' => 15, 'null' => false])
             ->addColumn('last_checked_at', 'datetime', ['default' => null, 'null' => true])
             ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
