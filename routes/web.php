@@ -14,6 +14,10 @@ use CQ\Middleware\AuthMiddleware;
 use CQ\Middleware\JsonMiddleware;
 
 $route->get('/', [GeneralController::class, 'index']);
+$route->get('/contact', [GeneralController::class, 'contact']);
+$route->get('/about', [GeneralController::class, 'about']);
+
+$route->get('/room/{roomId}', [RoomController::class, 'view']);
 
 $middleware->create(['prefix' => '/auth'], function () use ($route, $middleware) {
     $route->get('/request', [AuthCodeController::class, 'request']);

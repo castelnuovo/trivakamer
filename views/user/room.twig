@@ -1,0 +1,19 @@
+<a href="/room/{{room.id}}">
+    <div class="col">
+        <div class="card h-100">
+            {# TODO: integrate images #}
+            <img src="https://resources.kamernet.nl/image/ddb9f24e-b055-4832-b821-bff931523724" class="card-img-top" alt="..."/>
+            <div class="card-body">
+                <h4 class="card-title mb-0">{{room.address}}</h4>
+                <p class="card-text" style="font-size: 0.9rem">
+                    <strong>€{{room.price_monthly}} p/m</strong>
+                    |
+                    <strong>{{room.size_m2}} m<sup>2</sup>
+                    </strong>
+                    |
+                    <strong>{{room.created_at|date("F d, Y")}}</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</a>

@@ -1,0 +1,48 @@
+{% extends "partials/base.twig" %}
+{% set title = "Home" %}
+
+{% block content %}
+<div class="row mt-3 justify-content-center">
+    <div class="col-12 col-md-10">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <img class="img-fluid mx-auto d-block" src="https://resources.kamernet.nl/image/ddb9f24e-b055-4832-b821-bff931523724">
+                </div>
+
+                <div class="col-12 col-md-6 mt-2">
+                    <h2 class="text-center">{{room.address}}</h2>
+                    <h4 class="text-center">In Nijmegen</h3>
+
+                    <table class="table mt-3">
+                        <tbody>
+                            <tr>
+                                <td>Prijs (per maand)</td>
+                                <td>{{room.price_monthly}} / maand</td>
+                            </tr>
+                            <tr>
+                                <td>Oppervlakte</td>
+                                <td>{{room.size_m2}} m<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Geplaatst op</td>
+                                <td>{{room.created_at|date("F d, Y")}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="https://facebook.com/{{room.id}}" target="_blank" class="btn btn-lg btn-primary btn mt-4 d-block align-middle w-100 fw-bold border  rounded-pill px-4">Neem contact op</a>
+
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-12">
+                    <h3 class="text-center">Beschrijving</h3>
+                    <p style="text-align: justify;">{{room.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

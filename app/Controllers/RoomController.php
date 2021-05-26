@@ -27,8 +27,6 @@ final class RoomController extends Controller
                 'price_monthly',
                 'size_m2',
                 'address',
-                'published_at',
-                'updated_at',
                 'created_at'
             ],
             where: ['id' => $roomId]
