@@ -18,9 +18,9 @@ final class AdminController extends Controller
      */
     public function index(): HtmlResponse | JsonResponse
     {
-        FBHelper::saveAllGroupPostsToRooms();
+        FBHelper::saveAllGroupPostsToDB();
 
-        $unpublished_posts = DB::select(
+        $unpublished_rooms = DB::select(
             table: 'rooms',
             columns: [
                 'id',
@@ -33,26 +33,35 @@ final class AdminController extends Controller
                 'created_at'
             ],
             where: [
-                'published_at' => null
-                // TODO: limit to oldest 10
+                'published_at' => null,
+                'LIMIT' => 5
             ]
         );
 
-        return Respond::prettyJson(
-            message: 'fb_posts',
-            data: [
-                'unpublished_posts' => $unpublished_posts
+        $published_rooms = DB::select(
+            table: 'rooms',
+            columns: [
+                'id',
+                'description',
+                'price_monthly',
+                'size_m2',
+                'address',
+                'published_at',
+                'updated_at',
+                'created_at'
+            ],
+            where: [
+                'published_at[!]' => null,
+                // 'LIMIT' => 5
             ]
         );
 
-        //     return Respond::twig(
-        //         view: 'admin.twig',
-        //         parameters: [
-        //             'unpublished_posts' => $unpublished_posts
-        //         ]
-        //     );
+        return Respond::twig(
+            view: 'admin.twig',
+            parameters: [
+                'unpublished_rooms' => $unpublished_rooms,
+                'published_rooms' => $published_rooms
+            ]
+        );
     }
-
-
-    // publish post method
 }

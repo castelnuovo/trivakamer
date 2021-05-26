@@ -22,7 +22,7 @@ final class FBHelper
     /**
      * Query all groups and save new rooms to db
      */
-    public static function saveAllGroupPostsToRooms(): void
+    public static function saveAllGroupPostsToDB(): void
     {
         $fb_groups = DB::select(
             table: 'fb_groups',
@@ -36,14 +36,14 @@ final class FBHelper
         );
 
         foreach ($fb_groups as $fb_group) {
-            FBHelper::saveGroupPostsToRoom($fb_group);
+            FBHelper::saveGroupPostsToDB($fb_group);
         }
     }
 
     /**
      * Query group and save new rooms to db
      */
-    public static function saveGroupPostsToRoom(array $fb_group): void
+    public static function saveGroupPostsToDB(array $fb_group): void
     {
         $fb = self::get();
         $post_fields = "id,created_time,message"; // TODO: image support

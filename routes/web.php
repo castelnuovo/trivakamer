@@ -6,19 +6,14 @@ use App\Controllers\AdminController;
 use App\Controllers\GeneralController;
 use App\Controllers\UserController;
 use App\Controllers\AuthWebhookController;
+use App\Controllers\RoomController;
 use App\Middleware\AdminMiddleware;
 use CQ\Controllers\AuthCodeController;
 use CQ\Controllers\AuthDeviceController;
 use CQ\Middleware\AuthMiddleware;
-use CQ\Middleware\FormMiddleware;
 use CQ\Middleware\JsonMiddleware;
-use CQ\Middleware\RatelimitMiddleware;
 
 $route->get('/', [GeneralController::class, 'index']);
-
-$middleware->create(['middleware' => [FormMiddleware::class]], function () use ($route, $middleware) {
-    $route->post('/upload', [GeneralController::class, 'upload']);
-});
 
 $middleware->create(['prefix' => '/auth'], function () use ($route, $middleware) {
     $route->get('/request', [AuthCodeController::class, 'request']);
@@ -35,8 +30,13 @@ $middleware->create(['prefix' => '/auth'], function () use ($route, $middleware)
 
 $middleware->create(['middleware' => [AuthMiddleware::class]], function () use ($route, $middleware) {
     $route->get('/dashboard', [UserController::class, 'dashboard']);
+    $route->get('/room/{roomId}', [RoomController::class, 'view']);
 
-    $middleware->create(['prefix' => '/admin', 'middleware' => [AdminMiddleware::class]], function () use ($route) {
-        $route->get('', [AdminController::class, 'index']);
+    $middleware->create(['prefix' => '', 'middleware' => [AdminMiddleware::class]], function () use ($route, $middleware) {
+        $route->get('/admin', [AdminController::class, 'index']);
+
+        $middleware->create(['middleware' => [JsonMiddleware::class]], function () use ($route) {
+            $route->put('/room/{roomId}', [RoomController::class, 'update']);
+        });
     });
 });

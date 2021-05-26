@@ -1,5 +1,41 @@
-.search-wrapper {
-  background-image: url("/assets/images/gezellige-studentenkamer.jpg");
-  background-repeat: no-repeat;
-  padding: 100px 300px;
+.text-trired {
+  color: #e3403d !important;
+}
+
+.btn-trired {
+  color: #e96563 !important;
+}
+
+.btn-trired:hover{
+  color: #e3403d !important;
+}
+
+.text-triblue {
+  color: #1391d2 !important;
+}
+
+.btn-triblue {
+  color: #2daceb !important;
+}
+
+.btn-triblue:hover{
+  color: #1391d2!important;
+}
+
+.text-triyellow {
+  color: #fc9e15 !important;
+}
+
+.btn-triyellow {
+  color: #fcad36 !important;
+}
+
+.btn-triyellow:hover{
+  color: #fc9e15 !important;
+}
+
+.card-img-top {
+  width: 100% !important;
+  height: 15vw !important;
+  object-fit: cover !important;
 }

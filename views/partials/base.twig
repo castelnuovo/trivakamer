@@ -4,13 +4,15 @@
         <html>
             {% include 'partials/header.twig' %}
 
-            <header>
-                {% include 'partials/navbar.twig' %}
-            </header>
-
             <body>
-               {% block content %}
-               {% endblock %}
+                <header>
+                    {% include 'partials/navbar.twig' %}
+                </header>
+
+                <main role="main" class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </main>
             </body>
 
             {% include 'partials/footer.twig' %}

@@ -1,38 +1,30 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="/assets/images/banner.png" alt="trivakamer" class="d-inline-block align-top" height="50" />
+        <a class="navbar-brand mb-2" href="#">
+            <img src="/assets/images/banner.png" alt="" width="200" height="34"/>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar" aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsingNavbar">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ title == "Home" ? 'active' : '' }}" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ title == "Contact" ? 'active' : '' }}" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ title == "About Us" ? 'active' : '' }}" href="#">About us</a>
-                </li>
-
-                 {% if (logged_in or title != "Home")  %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">My Account</a>
+        <div class="collapse navbar-collapse justify-content-end" id="headerNavbar">
+            <div class="d-md-flex">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item active m-1">
+                        <a class="nav-link fw-bold rounded-pill px-4 text-center border border-danger btn-trired" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    <li class="nav-item active m-1">
+                        <a class="nav-link fw-bold rounded-pill px-4 text-center border border-primary btn-triblue" href="/contact">Contact</a>
                     </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/request">Login or Register</a>
+                    <li class="nav-item active m-1">
+                        <a class="nav-link fw-bold rounded-pill px-4 text-center border border-warning btn-triyellow" href="/about">About us</a>
                     </li>
-                {% endif %}
-            </ul>
+                    <li class="nav-item active m-1">
+                        <a class="nav-link fw-bold rounded-pill px-4 text-center border border-dark " href="/auth/request">Log in</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

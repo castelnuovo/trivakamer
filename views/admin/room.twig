@@ -1,0 +1,75 @@
+<a data-bs-toggle="modal" data-bs-target="#modal-{{room.id}}" class="btn btn-primary list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{room.address ?: room.id }}</h5>
+
+        <small class="text-muted">
+            Last updated: {{room.updated_at|date("F d, Y - H:i")}}
+            <br />
+            Published at: {{room.published_at|date("F d, Y - H:i")}}
+        </small>
+    </div>
+
+    <p class="text-muted">
+        Montly Price: {{room.price_monthly ?: 'No monthly price set' }}
+        <br />
+        Size: {{room.size_m2 ?: 'No size set' }}
+        <br />
+        Address: {{room.address ?: 'No address set' }}
+    </p>
+</a>
+
+<div class="modal fade" id="modal-{{room.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content" id="form-{{room.id}}">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{room.address ?: room.id }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>{{room.description}}</p>
+
+                <hr>
+
+                <div class="row">
+                    <label for="size_m2" class="col-sm-2 col-form-label">Size</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="size_m2" name="size_m2" value="{{room.size_m2}}" placeholder="Room size in square meters" aria-describedby="size_m2_addon">
+
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="size_m2_addon">m2</span>
+                        </div>
+                    </div>
+
+                    <label for="price_monthly" class="col-sm-2 col-form-label">Price</label>
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                            <span class="input-group-text">€</span>
+                        </div>
+
+                        <input type="text" class="form-control" id="price_monthly" name="price_monthly" value="{{room.price_monthly}}" placeholder="Price per month" aria-describedby="price_monthly_addon">
+
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="price_monthly_addon">/month</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="{{room.address}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                <button type="button" class="btn btn-primary" onclick="publishSite('{{room.id}}')">
+                    {# <span class="spinner-border spinner-border-sm"></span> #}
+                    {# Publishing... #}
+                    Publish
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
