@@ -34,7 +34,6 @@ $middleware->create(['prefix' => '/auth'], function () use ($route, $middleware)
 
 $middleware->create(['middleware' => [AuthMiddleware::class]], function () use ($route, $middleware) {
     $route->get('/dashboard', [UserController::class, 'dashboard']);
-    $route->get('/room/{roomId}', [RoomController::class, 'view']);
 
     $middleware->create(['prefix' => '', 'middleware' => [AdminMiddleware::class]], function () use ($route, $middleware) {
         $route->get('/admin', [AdminController::class, 'index']);
