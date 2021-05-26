@@ -14,6 +14,8 @@ class RoomValidator extends Validator
      */
     public static function update(object $data): void
     {
+        // TODO: fix requirements
+
         $v = v::attribute('size_m2', v::alnum()->length(1, 64))
             ->attribute('monthly_price', v::alnum()->length(1, 64))
             ->attribute('address', v::alnum()->length(1, 64));

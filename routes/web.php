@@ -38,5 +38,7 @@ $middleware->create(['middleware' => [AuthMiddleware::class]], function () use (
         $middleware->create(['middleware' => [JsonMiddleware::class]], function () use ($route) {
             $route->put('/room/{roomId}', [RoomController::class, 'update']);
         });
+
+        $route->delete('/room/{roomId}', [RoomController::class, 'delete']);
     });
 });

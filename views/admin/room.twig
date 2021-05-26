@@ -64,7 +64,13 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                <button type="button" class="btn btn-primary" onclick="publishSite('{{room.id}}')">
+                <button type="button" class="btn btn-danger" onclick="deleteRoom('{{room.id}}')">
+                    {# <span class="spinner-border spinner-border-sm"></span> #}
+                    {# Publishing... #}
+                    Delete
+                </button>
+
+                <button type="button" class="btn btn-primary" onclick="updateRoom('{{room.id}}')">
                     {# <span class="spinner-border spinner-border-sm"></span> #}
                     {# Publishing... #}
                     Publish

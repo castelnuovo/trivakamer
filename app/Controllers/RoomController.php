@@ -138,6 +138,11 @@ final class RoomController extends Controller
             );
         }
 
+        DB::delete(
+            table: 'rooms',
+            where: ['id' => $roomId]
+        );
+
         return Respond::prettyJson(
             message: 'Room deleted',
             data: [

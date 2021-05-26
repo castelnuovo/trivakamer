@@ -57,7 +57,7 @@ const apiUse = (method, endpoint, data) => {
     });
 }
 
-const publishSite = id => {
+const updateRoom = id => {
     const form = document.querySelector(`#form-${id}`);
     const modal = document.querySelector(`#form-${id}`);
     const data = formDataToJSON(new FormData(form));
@@ -72,4 +72,10 @@ const publishSite = id => {
 
     // TODO: close modal
     // TODO: remove div from html
+}
+
+const deleteRoom = id => {
+    if (confirm('Are you sure?')) {
+        apiUse('delete', `/room/${id}`);
+    }
 }
