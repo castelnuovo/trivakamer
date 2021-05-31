@@ -2,22 +2,39 @@
 {% set title = "Contact" %}
 
 {% block content %}
-<div class="container px-5" style="width: 60%">
-    <h2 class="mb-2">Contact form</h2>
-    <form>
-        <div class="mb-3">
-            <label for="exampleInputEmail" class="form-label">Name</label>
-            <input type="email" class="form-control" id="inputName" aria-describedby="emailHelp"/>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword" class="form-label">Email address</label>
-            <input type="text" class="form-control" id="inputEmail"/>
-        </div>
-        <div class="mb-3">
-            <label for="textArea" class="form-label">Message</label>
-            <textarea class="form-control" id="textArea" style="height: 100px"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="container">
+	<div class="row">
+		<div class="col-0 col-lg-2"></div>
+		<div class="col-0 col-lg-8">
+			<h2 class="mb-2">Contact form</h2>
+			<form>
+				<div class="mb-3">
+					<label for="exampleInputEmail" class="form-label">Name</label>
+					<input
+						type="email"
+						class="form-control"
+						id="inputName"
+						aria-describedby="emailHelp"
+						/>
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword" class="form-label"
+						>Email address</label
+						>
+					<input type="text" class="form-control" id="inputEmail" />
+				</div>
+				<div class="mb-3">
+					<label for="textArea" class="form-label">Message</label>
+					<textarea
+						class="form-control"
+						id="textArea"
+						style="height: 100px"
+						></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		<div class="col-0 col-lg-2"></div>
+	</div>
 </div>
 {% endblock %}

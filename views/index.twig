@@ -2,52 +2,95 @@
 {% set title = "Home" %}
 
 {% block content %}
-<form>
-    <div class="row mb-4 mt-1">
-        <div class="col-0 col-lg-2"></div>
-        <div class="col-12 col-lg-8">
-            <div class="row gx-2 my-1 input-group">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping"/>
-                </div>
-                <div class="col" style="max-width: 43px">
-                    <button class="btn border border-danger btn-trired" type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="row gx-2 my-1">
-                <div class="col-5">
-                    <div class="input-group">
-                        <input type="text" aria-label="Minimum price" class="form-control" placeholder="Minimum price"/>
-                        <input type="text" aria-label="Maxmimum price" class="form-control" placeholder="Maxmimum price"/>
-                    </div>
-                </div>
-                <div class="col-2"></div>
-                <!-- </div> -->
-                <div class="col-5">
-                    <div class="input-group">
-                        <input type="text" aria-label="Mimimum size" class="form-control" placeholder="Mimimum size"/>
-                        <input type="text" aria-label="Maximum size" class="form-control" placeholder="Maximum size"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-0 col-lg-2"></div>
-    </div>
-</form>
+<div class="container-fluid">
+	<form>
+		<div class="row mb-4 mt-1">
+			<div class="col-0 col-lg-2"></div>
+			<div class="col-12 col-lg-8">
+				<div class="row gx-2 my-1 input-group">
+					<div class="col">
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Search"
+							aria-label="Search"
+							aria-describedby="addon-wrapping"
+							/>
+					</div>
+					<div class="col" style="max-width: 43px">
+						<button
+							class="btn border border-danger btn-trired"
+							type="submit"
+							>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-search"
+								viewBox="0 0 16 16"
+								>
+								<path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+									/>
+							</svg>
+						</button>
+					</div>
+				</div>
+				<div class="row gx-2 my-1">
+					<div class="col-5">
+						<div class="input-group">
+							<input
+								type="text"
+								aria-label="Minimum price"
+								class="form-control"
+								placeholder="Minimum price"
+								/>
+							<input
+								type="text"
+								aria-label="Maxmimum price"
+								class="form-control"
+								placeholder="Maxmimum price"
+								/>
+						</div>
+					</div>
+					<div class="col-2"></div>
+					<!-- </div> -->
+					<div class="col-5">
+						<div class="input-group">
+							<input
+								type="text"
+								aria-label="Mimimum size"
+								class="form-control"
+								placeholder="Mimimum size"
+								/>
+							<input
+								type="text"
+								aria-label="Maximum size"
+								class="form-control"
+								placeholder="Maximum size"
+								/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-0 col-lg-2"></div>
+		</div>
+	</form>
+	<div class="row">
+		<div class="col-0 col-lg-2"></div>
+		<div class="col-0 col-lg-8">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% if not rooms %}
+                    <h3>No rooms found</h3>
+                {% endif %}
 
-<div class="container-fluid" style="width: 65%">
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% if not rooms %}
-        <h3>No rooms found</h3>
-    {% endif %}
-
-    {% for room in rooms %}
-        {% include 'user/room.twig' with {'room': room} %}
-    {% endfor %}
+                {% for room in rooms %}
+                    {% include 'user/room.twig' with {'room': room} %}
+                {% endfor %}
+			</div>
+		</div>
+		<div class="col-0 col-lg-2"></div>
+	</div>
 </div>
 {% endblock %}
